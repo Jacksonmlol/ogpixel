@@ -1,2 +1,0 @@
-# ogpixel
-ogpixel-website
