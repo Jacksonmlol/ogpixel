@@ -1,90 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OGPixel</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>OGpixel | Ultimate Eaglercraft Experience</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-<div class="view-counter">Visits: <span id="visitCount">0</span></div>
+<section class="hero">
+    <div class="hero-overlay">
+        <h1>OGPIXEL</h1>
+        <p>PUSHING EAGLERCRAFT TO ITS ABSOLUTE LIMITS</p>
+        <div class="hero-badge">ogpixel.org</div>
+    </div>
+</section>
 
-<nav>
-  <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="vote.html">Vote</a>
-  </div>
-</nav>
+<section class="main">
+    <div class="content">
+        <img src="images/logo.png" alt="Ogpixel Logo" class="logo">
+        <div class="text">
+            <h2>Superior Multiplayer</h2>
+            <p>
+                OGpixel is the premier Hypixel-inspired alternative for in-browser Minecraft. 
+                We offer a polished, high-performance experience for both Eaglercraft and Java players, 
+                with dedicated support and constant updates.
+            </p>
+        </div>
+    </div>
 
-<header>
-  <h1 class="logo-text">OGPixel</h1>
-  <div class="subtitle">THE CLASSIC EXPERIENCE REIMAGINED</div>
-</header>
+    <div class="ip-container">
+        <div class="ip-card" onclick="copyIP('wss://ogpixel.org', this)">
+            <span>EaglerCraft IP</span>
+            <strong id="eagler-ip">wss://ogpixel.org</strong>
+            <small>Click to copy</small>
+        </div>
+        <div class="ip-card" onclick="copyIP('ogpixel.org', this)">
+            <span>Java IP</span>
+            <strong id="java-ip">ogpixel.org</strong>
+            <small>Click to copy</small>
+        </div>
+    </div>
 
-<main class="container">
+    <div class="info">
+        <div class="box">
+            <h3 class="green">High Performance</h3>
+            <p>Powered by dedicated local hardware to ensure low latency and a 24/7 reliable connection.</p>
+        </div>
+        <div class="box">
+            <h3 class="yellow">Community Driven</h3>
+            <p>Founded and developed by Jackson. We build what the players want to see.</p>
+        </div>
+    </div>
+</section>
 
-  <section class="card">
-    <h2>Welcome to OGPixel</h2>
-    <p>
-      OGPixel kinda like hypixel, rebuilt for Java & Eaglercraft.
+<footer>
+    <p>&copy; 2024 OGpixel Staff | <a href="mailto:jackson@ogpixel.org">jackson@ogpixel.org</a></p>
+    <p class="small">
+        OGpixel is not affiliated with Mojang AB. Any DMCA claims on this site are considered fraudulent 
+        as we do not host copyrighted assets.
     </p>
-  </section>
-
-  <section class="card">
-    <h2>Server Connection</h2>
-
-    <div class="ip-row">
-      <div>
-        <strong>SERVER NETWORK</strong>
-        <span>wss://ogpixel.org</span>
-      </div>
-      <button onclick="copyText('wss://ogpixel.org', this)">COPY</button>
-    </div>
-
-    <div class="ip-row">
-      <div>
-        <strong>JAVA EDITION IP</strong>
-        <span>ogpixel.org</span>
-      </div>
-      <button onclick="copyText('ogpixel.org', this)">COPY</button>
-    </div>
-  </section>
-
-  <section class="card accent-card">
-    <p>Maintained by the <strong>OGPixel Staff Team</strong></p>
-  </section>
-
-</main>
-
-<footer class="footer">
-  © OGPixel — Not affiliated with Mojang AB
 </footer>
 
 <script>
-(function () {
-  const key = "ogpixel_visits";
-  let count = localStorage.getItem(key);
-  count = count ? Number(count) + 1 : 1;
-  localStorage.setItem(key, count);
-  document.getElementById("visitCount").textContent = count.toLocaleString();
-})();
-
-function copyText(text, btn) {
-  navigator.clipboard.writeText(text).then(() => {
-    const old = btn.textContent;
-    btn.textContent = "COPIED!";
-    btn.style.background = "#2ecc71";
-    setTimeout(() => {
-      btn.textContent = old;
-      btn.style.background = "";
-    }, 1500);
-  });
+function copyIP(text, element) {
+    navigator.clipboard.writeText(text).then(() => {
+        const originalText = element.querySelector('small').innerText;
+        element.querySelector('small').innerText = "Copied!";
+        element.classList.add('copied');
+        
+        setTimeout(() => {
+            element.querySelector('small').innerText = originalText;
+            element.classList.remove('copied');
+        }, 2000);
+    });
 }
 </script>
 
 </body>
-</html>
+</html> 
